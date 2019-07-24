@@ -3,6 +3,10 @@ install_manifest.txt
 CMakeCache.txt
 cmake_install.cmake
 CMakeFiles/
+MakeFile
+mytest
+libarrowhead_cpp.so
+CTestTestflie.cmake
 
 ### Eclipse/STS ###
 *.apt_generated
