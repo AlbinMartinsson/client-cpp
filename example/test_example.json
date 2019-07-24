@@ -1,0 +1,36 @@
+{
+	"core": {
+		"access_uri": "http://localhost:port/orchaORservis",
+		"secure_arrowhead_interface": false,
+		"secure_provider_interface": false,
+		"public_key_path": "a/absolute/path",
+		"private_key_path": "a/absolute/path",
+		"authentication_info": "aAthenticationKey"
+	},
+	"orchestration_flags": {
+		"override_store" : true,
+		"matchmaking" : true,
+		"metadata_search" : false,
+		"ping_providers" : false,
+		"only_preferred" : true,
+		"external_service_request" : false
+	},
+	"this_system": {
+		"this_name": "the_name_of_these_system",
+		"this_address": "local_ipv4_address",
+		"this_address6": "local_ipv6_address",
+		"this_port": 8460
+	},
+	"target_system": {
+		"target_name": "name_of_target_system",
+		"target_address": "target_system_address",
+		"target_port": 8462
+	},
+	"service": {
+		"service_name": "service_name",
+		"service_uri": "custom_uri_for_id_in_system",
+		"interface": "JSON",
+		"security": "token",
+		"unit": "what_is_sent"
+	}
+}

@@ -22,6 +22,7 @@ using f_void_f = void(*)(const char*, const char*);
 	class Subscriber : ApplicationServiceInterface{
 	public:
 		Subscriber();
+		Subscriber(std::string file_path, f_void_f callback);
 		~Subscriber();
 
 		ArrowheadDataExt config;

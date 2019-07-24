@@ -24,6 +24,7 @@ namespace arrowhead{
 		ArrowheadDataExt config;
 
 		Provider();
+		Provider(std::string file_path);
 		~Provider();
 		
 		void init(std::string base_name);

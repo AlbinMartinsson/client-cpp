@@ -155,6 +155,7 @@ size_t OrchestratorInterface::callbackGETHttp(char *ptr, size_t size){
 }
 
 size_t OrchestratorInterface::callbackRequest(const char *ptr, size_t size){
+	fprintf(stderr, "no over rider callbackRequest");
 	return size;
 }
 

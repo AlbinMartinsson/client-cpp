@@ -23,6 +23,7 @@ namespace arrowhead{
 	class Consumer : OrchestratorInterface{
 	public:
 		Consumer();
+		Consumer(std::string file_path, f_void_f callback);
 		~Consumer();
 	
 		ArrowheadDataExt config;

@@ -4,6 +4,10 @@ namespace arrowhead{
 	
 	Subscriber::Subscriber(){}
 	Subscriber::~Subscriber(){}
+	Subscriber::Subscriber(std::string file_path, f_void_f callback){
+		config.lood(file_path);
+		init(config.SERVICE_DEFINITION, callback);
+	}
 
 	void Subscriber::init(std::string base_name, f_void_f callback) {
 		// test sow there in not an error in set up for applicationServiceInterface
@@ -24,9 +28,6 @@ namespace arrowhead{
 	*/
 	int Subscriber::callbackServerHttpPOST(const char *url, 
 					const char *payload) {
-
-		printf("POST received in Subscriber.\npayload: %s\nurl: %s\n",
-						payload, url);
 		callback(url, payload);	
 		return 1;
 	}

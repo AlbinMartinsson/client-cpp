@@ -82,8 +82,8 @@ int HttpHandler::sendRequest(std::string pdata, std::string paddr,
 		res = curl_easy_perform(curl);
 
 		if(res != CURLE_OK)
-			fprintf(stderr, "curl_easy_perform() failed (in http): %s\n", 
-							curl_easy_strerror(res));
+			fprintf(stderr, "curl_easy_perform() failed (%s): %s\n", 
+							paddr.c_str(), curl_easy_strerror(res));
 
           curl_easy_getinfo(curl, CURLINFO_RESPONSE_CODE, &http_code);
 
@@ -98,7 +98,7 @@ int HttpHandler::sendRequest(std::string pdata, std::string paddr,
 // return of GET!
 // can be overloaded in child class
 size_t HttpHandler::callbackGETHttp(char *ptr, size_t size) {
-	printf("return of GET request.\nreturn data: %s\n", ptr);
+	fprintf(stderr, "return of GET request in http_handler.\nreturn data: %s\n", ptr);
 	return size;
 }
 
@@ -179,7 +179,6 @@ extern "C" int MHD_Callback(void *cls,
      int value;
      int ret = MHD_YES;
 
-     printf("MHD_Callback\n");
 
 //todo: check other methods, if needed, e.g. POST
 

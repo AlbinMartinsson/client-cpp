@@ -13,6 +13,12 @@ namespace arrowhead{
 	Provider::Provider(){}
 	Provider::~Provider(){}
 
+	Provider::Provider(std::string file_path) {
+		config.lood(file_path);
+		init(config.SERVICE_DEFINITION);
+	}
+	
+	
 	void Provider::init(std::string base_name) {
 		// test sow there in not an error in set up for applicationServiceInterface
 		if (!initApplicationServiceInterface(config))

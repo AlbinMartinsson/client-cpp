@@ -3,11 +3,14 @@ cmake_minimum_required(VERSION 2.8.3)
 project(arrowhead_cpp)
 
 
+set(EXECUTABLE_OUTPUT_PATH "bin")
+
 add_library(arrowhead_cpp SHARED 
 	src/Provider.cpp
 	src/Subscriber.cpp
 	src/Consumer.cpp
 	src/Publisher.cpp
+	src/ArrowheadDataExt.cpp
 	src/Interface/HttpHandler.cpp
 	src/Interface/HttpsHandler.cpp
 	src/Interface/ApplicationServiceInterface.cpp
@@ -34,6 +37,7 @@ include_directories("${dirs}")
 
 install(TARGETS arrowhead_cpp DESTINATION lib)
 install(DIRECTORY include/ DESTINATION include/arrowhead)
+
 
 
 # %EndTag(FULLTEXT)%

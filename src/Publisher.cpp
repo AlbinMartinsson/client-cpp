@@ -5,6 +5,10 @@ namespace arrowhead{
  
 	Publisher::Publisher(){}
 	Publisher::~Publisher(){}
+	Publisher::Publisher(std::string file_path) {
+		config.lood(file_path);
+		init();
+	}
 
 	bool Publisher::init(){
 		json_object *request_form;

@@ -107,10 +107,8 @@ The parameters that are to be set are: (all is not always used)
 | SERVICE_URI					| string	| Identification string |
 | UNIT							| string	| The unit of the service data |
 | SECURITY						| string	| Type of security ex. Token |
-| ACCESS_URI					| string	| URI to serviseRegestry or
-orchestration |
-| ACCESS_URI_HTTPS				| string	| HTTPs URI serviseReqestry or
-orchestration |
+| ACCESS_URI					| string	| URI to serviseRegestry or orchestration |
+| ACCESS_URI_HTTPS				| string	| HTTPs URI serviseReqestry or orchestration |
 | OVERRIDE_STORE				| bool		| Orchestration flags |
 | MATCHMAKING					| bool		| Orchestration flags |
 | PING_PROVIDERS				| bool		| Orchestration flags |
@@ -124,14 +122,13 @@ orchestration |
 | TARGET_ADDRESS				| string	| Target system's ipv4 address|
 | TARGET_PORT 					| int		| Target system's port |
 | SECURE_ARROWHEAD_INTERFACE	| bool		| Is HTTPs used |
-| SECURE_PROVIDER_INTERFACE		| bool		| Is HTTPs used to interface
-provider |
+| SECURE_PROVIDER_INTERFACE		| bool		| Is HTTPs used to interface to provider |
 | PUBLIC_KEY_PATH				| string	| Absolute path to public key |
 | PRIVATE_KEY_PATH				| string	| Absolute path to private key |
 | AUTHENTICATION_INFO			| string	| not user set |
 
 
-# Work to be don
+# Work to do
 ## HTTPs
 At the moment is no HTTPs functionality implemented.
 Some code for that do exist.

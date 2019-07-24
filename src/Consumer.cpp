@@ -6,6 +6,11 @@ namespace arrowhead{
 	Consumer::Consumer(){}
 	Consumer::~Consumer(){}
 
+	Consumer::Consumer(std::string file_path, f_void_f callback){
+		config.lood(file_path);
+		init(callback);
+	}
+
 	bool Consumer::init(f_void_f callback) {
 		json_object *request_form;
 		if(!getOrchetrationRequestForm(request_form, config)){

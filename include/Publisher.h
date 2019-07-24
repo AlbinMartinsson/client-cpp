@@ -21,6 +21,7 @@ namespace arrowhead{
 	class Publisher : OrchestratorInterface{
 	public:
 		Publisher();
+		Publisher(std::string file_path);
 		~Publisher();
 
 		ArrowheadDataExt config;
