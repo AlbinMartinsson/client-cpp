@@ -7,7 +7,7 @@ namespace arrowhead{
 	Consumer::~Consumer(){}
 
 	Consumer::Consumer(std::string file_path, f_void_f callback){
-		config.lood(file_path);
+		config.load(file_path);
 		init(callback);
 	}
 
@@ -49,7 +49,6 @@ namespace arrowhead{
 	// TODO error checking and handling
 	// return size imply success
 	size_t Consumer::callbackRequest(const char *payload, size_t size) {
-		printf("Request received data: %s\n", payload);
 		// figure out something good to send ass uri
 		callback(config.SERVICE_URI.c_str(), payload);
 		return size;

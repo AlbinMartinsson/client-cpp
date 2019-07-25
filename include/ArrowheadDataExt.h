@@ -8,8 +8,10 @@
 namespace arrowhead{
 	// struct contains all configure variables
 	class ArrowheadDataExt {
+
 	private:
 		void set(std::string settings);
+		
 		void setCore(json_object *core);
 		void setOrchestration(json_object *orchestation);
 		void setThis(json_object *this_system);
@@ -22,7 +24,7 @@ namespace arrowhead{
 
 	public:
 		// service settings
-		std::string SERVICE_DEFINITION;
+		std::string SERVICE_NAME;
 		std::string INTERFACE;
 		std::string	SERVICE_URI;
 		std::string UNIT;
@@ -60,9 +62,12 @@ namespace arrowhead{
 		
 		ArrowheadDataExt();
 		~ArrowheadDataExt();
-
+		
+		// print setting
 		void print();
-		void lood(std::string file_path);
+
+		// load setting form .json file
+		void load(std::string file_path);
 	
 	};
 }

@@ -6,7 +6,7 @@ namespace arrowhead{
 	Publisher::Publisher(){}
 	Publisher::~Publisher(){}
 	Publisher::Publisher(std::string file_path) {
-		config.lood(file_path);
+		config.load(file_path);
 		init();
 	}
 

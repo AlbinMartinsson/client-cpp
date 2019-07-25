@@ -37,7 +37,7 @@ bool OrchestratorInterface::getOrchetrationRequestForm(
             "\"port\": "+std::to_string(config.THIS_PORT)+", "
             "\"authenticationInfo\": \""+config.AUTHENTICATION_INFO+"\" }, "
 		"\"requestedService\": { "      
-        	"\"serviceDefinition\": \""+config.SERVICE_DEFINITION+"\", "
+        	"\"serviceDefinition\": \""+config.SERVICE_NAME+"\", "
             "\"interfaces\": [ \""+config.INTERFACE+"\" ], "
             "\"serviceMetadata\": { "       
             	"\"security\": \""+config.SECURITY+"\" } }, "
@@ -80,7 +80,7 @@ bool OrchestratorInterface::getOrchetrationRequestForm(
 
 	// requestedService
 	json_object *requested_service = json_object_new_object();
-	jstring = json_object_new_string(config.SERVICE_DEFINITION.c_str());
+	jstring = json_object_new_string(config.SERVICE_NAME.c_str());
 	json_object_object_add(requested_service, "serviceDefinition", jstring);
 	
 	json_object *jarray = json_object_new_array();

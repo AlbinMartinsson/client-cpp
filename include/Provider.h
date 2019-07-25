@@ -27,10 +27,10 @@ namespace arrowhead{
 		Provider(std::string file_path);
 		~Provider();
 		
-		void init(std::string base_name);
+		bool init();
 	
 		// Set new msgs to be returned on a GET request
-		void setMsgs(json_object *msgs);
+		bool setMsgs(json_object *msgs);
 	
 		// when a GET request is received
 		// @override
@@ -38,7 +38,6 @@ namespace arrowhead{
 						std::string *data_str);
 
 	private:
-		std::string base_name;
 		json_object *msgs;
 	};
 }

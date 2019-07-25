@@ -12,8 +12,7 @@ ApplicationServiceInterface::~ApplicationServiceInterface() {
 	deinit();
 }
 
-bool ApplicationServiceInterface::registerSensor(ArrowheadDataExt &config, 
-				std::string base_name) {
+bool ApplicationServiceInterface::registerSensor(ArrowheadDataExt &config) {
 
 	printf("\nREGISTRATION (%s, %s)\n\n",
 					config.SECURE_PROVIDER_INTERFACE ? 
@@ -48,7 +47,7 @@ bool ApplicationServiceInterface::registerSensor(ArrowheadDataExt &config,
 
 	printf("%s Post sent (SenML baseName = %s)\n", 
 					config.SECURE_ARROWHEAD_INTERFACE ? 
-					"HTTPs" : "HTTP", base_name.c_str());
+					"HTTPs" : "HTTP", config.SERVICE_NAME.c_str());
 
 	printf("%s Post return value: %d\n",
 					config.SECURE_ARROWHEAD_INTERFACE ? 
@@ -225,7 +224,7 @@ inline const char *GetHttpPayload(ArrowheadDataExt &config)
 *   ProvidedService section
 */
 
-    jstring = json_object_new_string(config.SERVICE_DEFINITION.c_str());
+    jstring = json_object_new_string(config.SERVICE_NAME.c_str());
     json_object_object_add(providedService, "serviceDefinition", jstring);
 
     json_object *jarray = json_object_new_array();

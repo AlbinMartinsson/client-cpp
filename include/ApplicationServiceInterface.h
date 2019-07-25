@@ -31,7 +31,7 @@ protected:
 	// create server to enable http request
 	// it cascade to createServer and MakeServer
 	bool initApplicationServiceInterface(ArrowheadDataExt &config);
-	bool registerSensor(ArrowheadDataExt &config, std::string base_name);
+	bool registerSensor(ArrowheadDataExt &config);
 	int deinit( );
 	
 	// register to service registry

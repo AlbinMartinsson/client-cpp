@@ -14,47 +14,50 @@ namespace arrowhead{
 	Provider::~Provider(){}
 
 	Provider::Provider(std::string file_path) {
-		config.lood(file_path);
-		init(config.SERVICE_DEFINITION);
+		config.load(file_path);
+		init();
 	}
 	
 	
-	void Provider::init(std::string base_name) {
+	bool Provider::init() {
 		// test sow there in not an error in set up for applicationServiceInterface
-		if (!initApplicationServiceInterface(config))
+		if (!initApplicationServiceInterface(config)) {
 			fprintf(stderr, "unable to init applictionServiceInterface");
+			return false;
+		}
 
-		this -> base_name = base_name;
 		
 		// register in the service register
-		if(!registerSensor(config, base_name))
-				fprintf(stderr, "cod not register sensor!\n");
+		if(!registerSensor(config)) {
+			fprintf(stderr, "cod not register sensor!\n");
+			return false;
+		}
 	
-		return;
+		return true;
 	}
 	
-	void Provider::setMsgs(json_object *msgs) {
+	bool Provider::setMsgs(json_object *msgs) {
 		//////////////////////////////////
 		// check sow it it a valid msgs //
 		//////////////////////////////////
 		if(msgs == NULL){
 			fprintf(stderr, "Error: Could not parse SenML: %s\n", 
 							json_object_get_string(msgs));
-			return;
+			return false;
 		}
 
 		 json_object *jBN;
-		if(!json_object_object_get_ex(msgs, "BaseName", &jBN)) {
-			fprintf(stderr, "Error: received json does not contain BaseName field!\n");
-			return;
+		if(!json_object_object_get_ex(msgs, "ServiceName", &jBN)) {
+			fprintf(stderr, "Error: received json does not contain ServiceName field!\n");
+			return false;
 		}
 
 		std::string bn = std::string(json_object_get_string(jBN));
 
-		if(bn != base_name) {
+		if(bn != config.SERVICE_NAME) {
 			fprintf(stderr, "baseNames don not match: %s != %s\n", 
-							bn.c_str(), base_name.c_str());
-			return;
+							bn.c_str(), config.SERVICE_NAME.c_str());
+			return false;
 		}
 		///////////////
 		// check end //
@@ -64,10 +67,11 @@ namespace arrowhead{
 		if (sensorIsRegistered) {
 			this -> msgs = msgs;
 			printf("New measurement received from: %s\n", 
-						this -> base_name.c_str());
+						this -> config.SERVICE_NAME.c_str());
 			printf("LastValue updated.\n");
-			return;
+			return true;
 		}
+		return false;
 	}
 
 

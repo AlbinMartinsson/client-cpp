@@ -4,21 +4,26 @@ namespace arrowhead{
 	
 	Subscriber::Subscriber(){}
 	Subscriber::~Subscriber(){}
+	
 	Subscriber::Subscriber(std::string file_path, f_void_f callback){
-		config.lood(file_path);
-		init(config.SERVICE_DEFINITION, callback);
+		config.load(file_path);
+		init(callback);
 	}
 
-	void Subscriber::init(std::string base_name, f_void_f callback) {
+	bool Subscriber::init(f_void_f callback) {
 		// test sow there in not an error in set up for applicationServiceInterface
 		if (!initApplicationServiceInterface(config)){
 			fprintf(stderr, "unable to init applictionServiceInterface");
+			return false;
 		}
 
-		registerSensor(config, base_name);
+		// register in the service register
+		if(!registerSensor(config)) {
+			fprintf(stderr, "cod not register sensor!\n");
+			return false;
+		}
 		Subscriber::callback = callback;
-		this -> base_name = base_name;
-	
+		return true;
 	}
 
 	/*
@@ -28,6 +33,7 @@ namespace arrowhead{
 	*/
 	int Subscriber::callbackServerHttpPOST(const char *url, 
 					const char *payload) {
+		
 		callback(url, payload);	
 		return 1;
 	}

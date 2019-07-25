@@ -27,7 +27,7 @@ using f_void_f = void(*)(const char*, const char*);
 
 		ArrowheadDataExt config;
 
-		void init(std::string base_name, f_void_f callback);
+		bool init(f_void_f callback);
 		
 		// when a POST request is received
 		// @override
