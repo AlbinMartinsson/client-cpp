@@ -3,8 +3,7 @@ install_manifest.txt
 CMakeCache.txt
 cmake_install.cmake
 CMakeFiles/
-MakeFile
-mytest
+Makefile
 libarrowhead_cpp.so
 CTestTestfile.cmake
 
