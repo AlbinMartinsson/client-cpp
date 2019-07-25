@@ -20,8 +20,12 @@ add_library(arrowhead_cpp SHARED
 	src/Security/base64.cpp
 	src/Security/RSASecurity.cpp
 )
-set_source_files_properties(src/Interface/ini/iniparser.c PROPERTIES LANGUAGE CXX)
-set_source_files_properties(src/Interface/ini/dictionary.c PROPERTIES LANGUAGE CXX)
+set_source_files_properties(src/Interface/ini/iniparser.c
+	PROPERTIES LANGUAGE CXX
+)
+set_source_files_properties(src/Interface/ini/dictionary.c
+	PROPERTIES LANGUAGE CXX
+)
 
 target_link_libraries(arrowhead_cpp 
 	curl
@@ -35,8 +39,17 @@ target_link_libraries(arrowhead_cpp
 set(dirs "include")
 include_directories("${dirs}")
 
-install(TARGETS arrowhead_cpp DESTINATION lib)
-install(DIRECTORY include/ DESTINATION include/arrowhead)
+install(TARGETS
+	arrowhead_cpp
+	DESTINATION
+	lib
+)
+
+install(DIRECTORY
+	include/
+	DESTINATION
+	include/arrowhead
+)
 
 
 
