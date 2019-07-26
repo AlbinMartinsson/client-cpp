@@ -18,7 +18,7 @@ int OrchestratorInterface::sendOrchestrationRequest(
 				ArrowheadDataExt *config) {
 
 	if(config->SECURE_ARROWHEAD_INTERFACE)
-          return SendHttpsRequest(requestForm, config->ACCESS_URI_HTTPS, "POST");
+          return SendHttpsRequest(requestForm, config->ACCESS_URI, "POST");
 	else
           return sendRequest(requestForm, config->ACCESS_URI, "POST");
 }

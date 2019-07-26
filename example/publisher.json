@@ -18,7 +18,6 @@
 	"this_system": {
 		"this_name": "example_publisher",
 		"this_address": "130.240.5.68",
-		"this_address6": "",
 		"this_port": 8503
 	},
 	"target_system": {

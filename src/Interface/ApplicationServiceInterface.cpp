@@ -149,33 +149,18 @@ bool ApplicationServiceInterface::initApplicationServiceInterface(
 	if(config.THIS_ADDRESS.size() != 0){
 		return createServer(config.THIS_ADDRESS, config.THIS_PORT);
 	}
-	else{ // ipv6
-	    printf("Warning: Could not parse IPv4 address from config, trying to use IPv6!\n");
-
-		return createServer(config.THIS_ADDRESS6, config.THIS_PORT);
-	}
 }
 
 bool ApplicationServiceInterface::createServer(std::string ip, int port){
-	// https is not in use
-	URI      = "http://"  + ip + ":" + std::to_string(port);
-	//HTTPs_URI = "https://" + ip + ":" + std::to_string(port+1);
-
+	//URI      = "http://"  + ip + ":" + std::to_string(port);
 
 	if( MakeServer(port) ) {
-		printf("Error: Unable to start HTTP Server (%s:%d)!\n",
+		printf("Error: Unable to start Server (%s:%d)!\n",
 						ip.c_str(), port);
 		return false;
     }
 
-
-    //if( MakeHttpsServer(port+1) ) {
-	//	printf("Error: Unable to start HTTPs Server (%s:%d)!\n", ip.c_str(), port+1);
-	//	return false;
-    //}
-
-	printf("\n(HTTP Server) started - %s:%d\n", ip.c_str(), port);
-	//printf("\n(HTTPs Server) started - %s:%d\n", ip.c_str(), port+1);
+	printf("\n(Server) started - %s:%d\n", ip.c_str(), port);
 	return true;
 }
 
@@ -250,9 +235,7 @@ inline const char *GetHttpPayload(ArrowheadDataExt &config)
     jstring = json_object_new_string(config.THIS_SYSTEM_NAME.c_str());
     json_object_object_add(provider, "systemName", jstring);
 
-    jstring = json_object_new_string( config.THIS_ADDRESS.size() != 0 ?
-					config.THIS_ADDRESS.c_str() : 
-					config.THIS_ADDRESS6.c_str());
+    jstring = json_object_new_string(config.THIS_ADDRESS.c_str()); 
 
     json_object_object_add(provider, "address", jstring);
 
@@ -293,7 +276,7 @@ int ApplicationServiceInterface::registerToServiceRegistry(
 	
 	if(config.SECURE_ARROWHEAD_INTERFACE)
     	return SendHttpsRequest(GetHttpPayload(config), 
-						  config.ACCESS_URI_HTTPS + "register", "POST");
+						  config.ACCESS_URI + "register", "POST");
      
 	else
         return sendRequest(GetHttpPayload(config), 
@@ -305,7 +288,7 @@ int ApplicationServiceInterface::unregisterFromServiceRegistry(
 
 	if(config.SECURE_ARROWHEAD_INTERFACE)
     	return SendHttpsRequest(GetHttpPayload(config), 
-						  config.ACCESS_URI_HTTPS + "remove", "PUT");
+						  config.ACCESS_URI + "remove", "PUT");
 
 	else
     	return sendRequest(GetHttpPayload(config), 

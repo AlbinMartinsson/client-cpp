@@ -45,15 +45,6 @@ TEST(json_core_privat, test5){
 	ASSERT_NE("", config.PRIVATE_KEY_PATH);
 }
 
-TEST(json_core_authentication, test6){
-	arrowhead::ArrowheadDataExt config;
-	std::string s = "test_example.json";
-	config.load(s);
-	ASSERT_EQ("aAthenticationKey", config.AUTHENTICATION_INFO);
-	ASSERT_NE("random", config.AUTHENTICATION_INFO);
-	ASSERT_NE("", config.AUTHENTICATION_INFO);
-}
-
 TEST(json_orchestration_flags_os, test7){
 	arrowhead::ArrowheadDataExt config;
 	std::string s = "test_example.json";
@@ -115,18 +106,9 @@ TEST(json_this_address, test14){
 	arrowhead::ArrowheadDataExt config;
 	std::string s = "test_example.json";
 	config.load(s);
-	ASSERT_EQ("local_ipv4_address", config.THIS_ADDRESS);
+	ASSERT_EQ("local_address", config.THIS_ADDRESS);
 	ASSERT_NE("random", config.THIS_ADDRESS);
 	ASSERT_NE("", config.THIS_ADDRESS);
-}
-
-TEST(json_this_address6, test15){
-	arrowhead::ArrowheadDataExt config;
-	std::string s = "test_example.json";
-	config.load(s);
-	ASSERT_EQ("local_ipv6_address", config.THIS_ADDRESS6);
-	ASSERT_NE("random", config.THIS_ADDRESS6);
-	ASSERT_NE("", config.THIS_ADDRESS6);
 }
 
 TEST(json_this_port, test16){
@@ -169,9 +151,9 @@ TEST(json_sevice_name, test20){
 	arrowhead::ArrowheadDataExt config;
 	std::string s = "test_example.json";
 	config.load(s);
-	ASSERT_EQ("service_name", config.SERVICE_DEFINITION);
-	ASSERT_NE("random", config.SERVICE_DEFINITION);
-	ASSERT_NE("", config.SERVICE_DEFINITION);
+	ASSERT_EQ("service_name", config.SERVICE_NAME);
+	ASSERT_NE("random", config.SERVICE_NAME);
+	ASSERT_NE("", config.SERVICE_NAME);
 }
 
 TEST(json_sevice_uri, test21){

@@ -33,7 +33,6 @@ namespace arrowhead{
 	
 		// connect to core
 		std::string ACCESS_URI;
-		std::string ACCESS_URI_HTTPS;
 	
 		// orchestrator setting
 		bool OVERRIDE_STORE;
@@ -46,7 +45,6 @@ namespace arrowhead{
 		// this procumer
 		std::string	THIS_SYSTEM_NAME;
 		std::string THIS_ADDRESS;
-		std::string THIS_ADDRESS6;
 		int THIS_PORT;
 
 		// target procumer

@@ -21,7 +21,6 @@ namespace arrowhead{
 	
 		printf("\nCore conection\n");
 		printf("ACCESS_URI: %s\n", ACCESS_URI.c_str());
-		printf("ACCESS_URI_HTTPS: %s\n", ACCESS_URI_HTTPS.c_str());
 	
 		printf("\nOrchestrator settings\n");
 		printf("OVERRIDE_STORE: %s\n", b2s(OVERRIDE_STORE));
@@ -35,7 +34,6 @@ namespace arrowhead{
 		printf("\nThis procomer\n");
 		printf("THIS_SYSTEM_NAME: %s\n", THIS_SYSTEM_NAME.c_str());
 		printf("THIS_ADDRESS: %s\n", THIS_ADDRESS.c_str());
-		printf("THIS_ADDRESS6: %s\n", THIS_ADDRESS6.c_str());
 		printf("THIS_PORT: %i\n", THIS_PORT);
 		
 		printf("\nTarget provomer\n");
@@ -122,7 +120,6 @@ namespace arrowhead{
 		SECURE_ARROWHEAD_INTERFACE = getBool("secure_provider_interface", core);
 		PUBLIC_KEY_PATH = getString("public_key_path", core);
 		PRIVATE_KEY_PATH = getString("private_key_path", core);
-		AUTHENTICATION_INFO = getString("authentication_info", core);
 	}
 	
 	void ArrowheadDataExt::setOrchestration(json_object* orchestration) {
@@ -137,7 +134,6 @@ namespace arrowhead{
 	void ArrowheadDataExt::setThis(json_object *this_system) {
 		THIS_SYSTEM_NAME = getString("this_name", this_system);
 		THIS_ADDRESS = getString("this_address", this_system);
-		THIS_ADDRESS6 = getString("this_address6", this_system);
 		THIS_PORT = getInt("this_port", this_system);
 	}
 	

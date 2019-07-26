@@ -137,7 +137,6 @@ The parameters that are to be set are: (all is not always used)
 | UNIT							| string	| The unit of the service data |
 | SECURITY						| string	| Type of security ex. Token |
 | ACCESS_URI					| string	| URI to serviseRegestry or orchestration |
-| ACCESS_URI_HTTPS				| string	| HTTPs URI serviseReqestry or orchestration |
 | OVERRIDE_STORE				| bool		| Orchestration flags |
 | MATCHMAKING					| bool		| Orchestration flags |
 | METADATA_SEARCH				| bool		| Orchestration flags |
@@ -145,11 +144,10 @@ The parameters that are to be set are: (all is not always used)
 | ONLY_PREFERRED				| bool		| Orchestration flags |
 | EXTERNAL_SERVICE_REQUEST		| bool		| Orchestration flags |
 | THIS_SYSTEM_NAME				| string	| This systems name |
-| THIS_ADDRESS					| string 	| This system's ipv4 address|
-| THIS_ADDRESS6					| string 	| This system's ipv6 address|
+| THIS_ADDRESS					| string 	| This system's address|
 | THIS_PORT						| int		| This system's port |
 | TARGET_SYSTEM_NAME			| string	| Target system's name |
-| TARGET_ADDRESS				| string	| Target system's ipv4 address|
+| TARGET_ADDRESS				| string	| Target system's address|
 | TARGET_PORT 					| int		| Target system's port |
 | SECURE_ARROWHEAD_INTERFACE	| bool		| Is HTTPs used |
 | SECURE_PROVIDER_INTERFACE		| bool		| Is HTTPs used to interface with provider |

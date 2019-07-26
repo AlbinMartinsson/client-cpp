@@ -11,7 +11,9 @@
 
 namespace arrowhead{
 
-
+//////////////////////
+// callbacks inline //
+//////////////////////
 inline size_t HttpHandler::httpResponseCallback(char *ptr, size_t size)
 {
 	return size;
@@ -36,6 +38,10 @@ inline size_t httpPOSTResponseHandler(char *ptr, size_t size,
 		fprintf(stderr, "POST not ok: %s\n", ptr);
 	return size*nmemb;
 }
+//////////////////////
+// callbacks inline //
+//////////////////////
+
 int HttpHandler::sendRequest(std::string pdata, std::string paddr, 
 				std::string pmethod) {
 
