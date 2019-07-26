@@ -66,12 +66,18 @@ target_link_libraries(example_callback_consumer
 	json-c
 )
 
-add_executable(uTest test/test_arrowheadDataExt.cpp)
+add_executable(uTest 
+	test/main_test.cpp
+	test/test_ErrorPrevention.cpp
+	test/test_arrowheadDataExt.cpp
+)
 
 target_link_libraries(uTest 
-		${GTEST_LIBRARIES} 
-		${PROJECT_LINK_LIBS}
-		pthread)
+	${GTEST_LIBRARIES} 
+	${PROJECT_LINK_LIBS}
+	pthread
+	json-c
+)
 
 add_test(testcase1 uTest)
 

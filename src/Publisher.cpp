@@ -1,4 +1,5 @@
 #include "Publisher.h"
+#include "ErrorPrevention.h"
 #include <json-c/json.h>
 
 namespace arrowhead{
@@ -34,6 +35,8 @@ namespace arrowhead{
 	}
 
 	void Publisher::publish(json_object *msgs){
+		if(!ErrorPrevention::correctService(msgs, config.SERVICE_NAME))
+			return;
 		sendRequestToProvider(json_object_get_string(msgs), 
 						this -> target_uri, "pub");
 	}

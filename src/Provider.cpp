@@ -1,4 +1,5 @@
 #include "Provider.h"
+#include "ErrorPrevention.h"
 
 #ifdef __linux__
      #include "iniparser.h"
@@ -41,38 +42,15 @@ namespace arrowhead{
 	}
 	
 	bool Provider::setMsgs(json_object *msgs) {
-		//////////////////////////////////
-		// check sow it it a valid msgs //
-		//////////////////////////////////
-		if(msgs == NULL){
-			fprintf(stderr, "Error: Could not parse SenML: %s\n", 
-							json_object_get_string(msgs));
+		if(!ErrorPrevention::correctService(msgs,config.SERVICE_NAME)) 
 			return false;
-		}
 
-		 json_object *jBN;
-		if(!json_object_object_get_ex(msgs, "ServiceName", &jBN)) {
-			fprintf(stderr, "Error: received json does not contain ServiceName field!\n");
-			return false;
-		}
-
-		std::string bn = std::string(json_object_get_string(jBN));
-
-		if(bn != config.SERVICE_NAME) {
-			fprintf(stderr, "baseNames don not match: %s != %s\n", 
-							bn.c_str(), config.SERVICE_NAME.c_str());
-			return false;
-		}
-		///////////////
-		// check end //
-		///////////////
-		
 		// if sensor is register is a new msgs set
 		if (sensorIsRegistered) {
 			this -> msgs = msgs;
 			printf("New measurement received from: %s\n", 
-						this -> config.SERVICE_NAME.c_str());
-			printf("LastValue updated.\n");
+						config.SERVICE_NAME.c_str());
+			printf("megs updated.\n");
 			return true;
 		}
 		return false;
@@ -82,6 +60,9 @@ namespace arrowhead{
 	// @override
 	int Provider::callbackServerHttpGET(const char *URL, 
 						std::string *data_stre) {
+
+		if (!ErrorPrevention::correctURI(URL, config.SERVICE_URI))
+				return 0;
 
 		// if a user callback are used use it
 		// return eminently after
@@ -93,12 +74,6 @@ namespace arrowhead{
     	printf("\nHTTP GET request received\n");
 
   	 	printf("Received URL: %s\n", URL);
-    	std::string tmp = "/" + this -> config.SERVICE_URI;
-		// test sow the request has arived at the correct place 
-		if (strcmp(tmp.c_str(), URL) != 0) {
-			fprintf(stderr, "Error: Unknown URL: %s\n", URL);
-			return 1;
-		}
 		
     	 *data_stre= json_object_get_string(msgs);
 	     printf("Response:\n%s\n\n", data_stre->c_str());

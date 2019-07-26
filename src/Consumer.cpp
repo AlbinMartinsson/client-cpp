@@ -1,4 +1,5 @@
 #include "Consumer.h"
+#include "ErrorPrevention.h"
 #include <json-c/json.h>
 
 namespace arrowhead{
@@ -49,6 +50,8 @@ namespace arrowhead{
 	// TODO error checking and handling
 	// return size imply success
 	size_t Consumer::callbackRequest(const char *payload, size_t size) {
+		if(!ErrorPrevention::correctService(payload, config.SERVICE_NAME))
+			return 0;
 		// figure out something good to send ass uri
 		callback(config.SERVICE_URI.c_str(), payload);
 		return size;

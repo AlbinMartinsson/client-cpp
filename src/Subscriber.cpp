@@ -1,4 +1,5 @@
 #include "Subscriber.h"
+#include "ErrorPrevention.h"
 
 namespace arrowhead{
 	
@@ -34,6 +35,9 @@ namespace arrowhead{
 	int Subscriber::callbackServerHttpPOST(const char *url, 
 					const char *payload) {
 		
+		if(!ErrorPrevention::correctURI(url, config.SERVICE_URI))
+			return 0;
+
 		callback(url, payload);	
 		return 1;
 	}

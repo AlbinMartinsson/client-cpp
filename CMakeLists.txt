@@ -11,6 +11,7 @@ add_library(arrowhead_cpp SHARED
 	src/Consumer.cpp
 	src/Publisher.cpp
 	src/ArrowheadDataExt.cpp
+	src/ErrorPrevention.cpp
 	src/Interface/HttpHandler.cpp
 	src/Interface/HttpsHandler.cpp
 	src/Interface/ApplicationServiceInterface.cpp
