@@ -17,7 +17,11 @@ namespace arrowhead{
 		config.load(file_path);
 		init();
 	}
-	
+
+	Provider::Provider(std::string file_path, f_int_f callback) : Provider(file_path) {
+		or_callback = true;
+		this -> callback = callback; 
+	}
 	
 	bool Provider::init() {
 		// test sow there in not an error in set up for applicationServiceInterface
@@ -78,6 +82,10 @@ namespace arrowhead{
 	// @override
 	int Provider::callbackServerHttpGET(const char *URL, 
 						std::string *data_stre) {
+
+		if (or_callback)
+			return callback(URL, data_stre);
+			
     	printf("\nHTTP GET request received\n");
 
   	 	printf("Received URL: %s\n", URL);

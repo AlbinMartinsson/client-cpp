@@ -1,0 +1,36 @@
+{
+	"core": {
+		"access_uri": "http://localhost:8440/orchestrator/orchestration",
+		"secure_arrowhead_interface": false,
+		"secure_provider_interface": false,
+		"public_key_path": "",
+		"private_key_path": "",
+		"authentication_info": ""
+	},
+	"orchestration_flags": {
+		"override_store" : true,
+		"matchmaking" : true,
+		"metadata_search" : false,
+		"ping_providers" : false,
+		"only_preferred" : true,
+		"external_service_request" : false
+	},
+	"this_system": {
+		"this_name": "example_callback_consumer",
+		"this_address": "130.240.5.68",
+		"this_address6": "",
+		"this_port": 8506
+	},
+	"target_system": {
+		"target_name": "example_callback_provider",
+		"target_address": "130.240.5.68",
+		"target_port": 8505
+	},
+	"service": {
+		"service_name": "counter_example_callback",
+		"service_uri": "example",
+		"interface": "JSON",
+		"security": "token",
+		"unit": "int"
+	}
+}

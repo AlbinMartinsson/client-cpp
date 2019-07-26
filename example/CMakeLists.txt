@@ -48,6 +48,24 @@ target_link_libraries(example_subscriber
 	json-c
 )
 
+add_executable(example_callback_provider 
+	src/example_callback_provider.cpp
+)
+
+target_link_libraries(example_callback_provider 
+	${PROJECT_LINK_LIBS}
+	json-c
+)
+
+add_executable(example_callback_consumer 
+	src/example_callback_consumer.cpp
+)
+
+target_link_libraries(example_callback_consumer 
+	${PROJECT_LINK_LIBS}
+	json-c
+)
+
 add_executable(uTest test/test_arrowheadDataExt.cpp)
 
 target_link_libraries(uTest 

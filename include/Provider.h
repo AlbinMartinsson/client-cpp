@@ -19,12 +19,16 @@
 
 namespace arrowhead{
 
+	// for callback when request is received
+	using f_int_f = int(*)(const char*, std::string*);
+
 	class Provider : ApplicationServiceInterface {
 	public:
 		ArrowheadDataExt config;
 
 		Provider();
 		Provider(std::string file_path);
+		Provider(std::string file_path, f_int_f callback);
 		~Provider();
 		
 		bool init();
@@ -39,5 +43,7 @@ namespace arrowhead{
 
 	private:
 		json_object *msgs;
+		f_int_f callback;
+		bool or_callback = false;
 	};
 }
