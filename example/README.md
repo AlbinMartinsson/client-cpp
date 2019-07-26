@@ -1,7 +1,11 @@
 # Examples
 
-There are 4 example.
+There are 5 unike example.
 One of each type of system: provider, consumer, publisher and subscriber.
+And one alternative provider.
+To the alternative provider a corresponding consumer with appropriate
+`callback_consumer.json`.
+
 
 To make them work do you need to change the `.json` files to match your
 system.
@@ -21,6 +25,8 @@ To run the examples:
 > bin/example_consumer  
 > bin/example_publisher  
 > bin/example_subscriber  
+> bin/example_callback_provider  
+> bin/example_callback_consumer
 
 There is all sow a test build.
 To run that:

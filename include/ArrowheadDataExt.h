@@ -12,6 +12,7 @@ namespace arrowhead{
 	private:
 		void set(std::string settings);
 		
+		// json extraction help functions
 		void setCore(json_object *core);
 		void setOrchestration(json_object *orchestation);
 		void setThis(json_object *this_system);

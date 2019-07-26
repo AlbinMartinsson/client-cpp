@@ -26,11 +26,14 @@ namespace arrowhead{
 	public:
 		ArrowheadDataExt config;
 
+		// different constructors for different behaviors
 		Provider();
 		Provider(std::string file_path);
 		Provider(std::string file_path, f_int_f callback);
 		~Provider();
-		
+	
+		// initialize the system
+		// config params need to be set prior to these
 		bool init();
 	
 		// Set new msgs to be returned on a GET request

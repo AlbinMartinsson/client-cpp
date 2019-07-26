@@ -83,9 +83,13 @@ namespace arrowhead{
 	int Provider::callbackServerHttpGET(const char *URL, 
 						std::string *data_stre) {
 
+		// if a user callback are used use it
+		// return eminently after
 		if (or_callback)
 			return callback(URL, data_stre);
 			
+		// if no user define callback
+		// return msgs
     	printf("\nHTTP GET request received\n");
 
   	 	printf("Received URL: %s\n", URL);

@@ -42,19 +42,19 @@ json_object* msgs(int value, std::string id, std::string unit){
 	return obj;
 }
 
+// these function is triggered when a request is received
 int callback(const char *URL, std::string *return_data) {
-	
-	
     	printf("\nCallback trigged \n");
   	 	printf("Received URL: %s\n", URL);
 
-    	std::string tmp = "/" + provider.config.SERVICE_URI;
 		// test sow the request has arived at the correct place 
+    	std::string tmp = "/" + provider.config.SERVICE_URI;
 		if (strcmp(tmp.c_str(), URL) != 0) {
 			fprintf(stderr, "Error: Unknown URL: %s\n", URL);
 			return 0;
 		}
-		
+	
+		// it is these messages that will be returned to the consumer.
     	 *return_data = json_object_get_string(msgs(i++, 
 								 provider.config.SERVICE_NAME, 
 								 provider.config.UNIT));
@@ -69,6 +69,7 @@ int main(int argc, char* argv[]){
 	// print settings for debugging
 	provider.config.print();
 
+	// wait for interrupts from get requests
 	while(true) {
 		sleep(500);
 	}

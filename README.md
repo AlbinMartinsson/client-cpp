@@ -56,6 +56,11 @@ You can off curse include ass many ass you need.
 Provider my_provider("path_to_json_with_settings");
 my_provider.setMsgs(json_object);
 ```
+or with your on callback for when requests are reserved. 
+```cpp
+int callbackFunktion(const char *URL, std::string *return_data);
+Provider my_provider("path_to_json_with_settings", callbackFunktion);
+```
 or
 ```cpp
 Provider my_provider;
@@ -66,6 +71,9 @@ my_provider.setMsgs(json_object)
 `my_provider.config` is a struct containing settings, see more under
 `config`.
 The `json_object` shod contain the msgs you providing.
+The callbackFunctions need to be a int returner. That returns 1 when it is
+working.
+And the parameters need to be of type `const char*` and `std::string*`.
 
 ### Consumer example
 ```cpp
