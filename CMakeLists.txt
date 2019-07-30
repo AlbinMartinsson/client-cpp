@@ -52,6 +52,12 @@ install(DIRECTORY
 	include/arrowhead
 )
 
-
+install(PROGRAMS
+		scripts/ah_gen_db_setup.sh
+		DESTINATION
+		bin
+		RENAME
+		ah_gen_db_setup
+)
 
 # %EndTag(FULLTEXT)%

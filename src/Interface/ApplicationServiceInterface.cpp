@@ -37,7 +37,7 @@ bool ApplicationServiceInterface::registerSensor(ArrowheadDataExt &config) {
 
         config.AUTHENTICATION_INFO = pubkeyContent;
 	}
-    /////////
+	/////////
 	// end //
 	/////////
 
@@ -54,12 +54,12 @@ bool ApplicationServiceInterface::registerSensor(ArrowheadDataExt &config) {
 					"HTTPs" : "HTTP", returnValue);
 
 	if (returnValue == 201 /*Created*/){
-          sensorIsRegistered = true;
+        sensorIsRegistered = true;
 		return true;
 	}
 	else{ // error handling
 
-         printf("Already registered?\n");
+        printf("Already registered?\n");
 		printf("Try re-registration\n");
 
 		returnValue = unregisterFromServiceRegistry(config);
@@ -75,8 +75,8 @@ bool ApplicationServiceInterface::registerSensor(ArrowheadDataExt &config) {
 		returnValue = registerToServiceRegistry(config);
 
 		if (returnValue == 201 /*Created*/) {
-               sensorIsRegistered = true;
-               return true;
+        	sensorIsRegistered = true;
+        	return true;
 		}
 		else {
 			fprintf(stderr, "unsuccessful registration\n");
@@ -275,11 +275,11 @@ int ApplicationServiceInterface::registerToServiceRegistry(
 				ArrowheadDataExt &config) {
 	
 	if(config.SECURE_ARROWHEAD_INTERFACE)
-    	return SendHttpsRequest(GetHttpPayload(config), 
+		return SendHttpsRequest(GetHttpPayload(config), 
 						  config.ACCESS_URI + "register", "POST");
      
 	else
-        return sendRequest(GetHttpPayload(config), 
+		return sendRequest(GetHttpPayload(config), 
 						  config.ACCESS_URI + "register", "POST");
 }
 

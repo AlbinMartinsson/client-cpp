@@ -4,26 +4,25 @@ code.
 It is designed to be installed ass a library.
 
 ## Prerequisites
-The following Linux packages are prerequisities:
+The following Linux packages are prerequisites:
 
-> sudo apt install openss, libgnutls28-dev libgnutlsxx28 libssl1.1 libssl1.0-dev libcurl3 libcurl3-gnutls libcurl4-gnutls-dev libcrypto++-dev libcrypto++-utils libcrypto++6 libgpg-error-dev automake texinfo g++ libjson-c-dev
+> sudo apt install openssl, libgnutls28-dev libgnutlsxx28 libssl1.1 libssl1.0-dev libcurl3 libcurl3-gnutls libcurl4-gnutls-dev libcrypto++-dev libcrypto++-utils libcrypto++6 libgpg-error-dev automake texinfo g++ libjson-c-dev jq
 
 The project uses libmicrohttpd-0.9.59 as well. Download, compile and install it from source with HTTPS support: https://ftp.gnu.org/gnu/libmicrohttpd/
-  >tar -xvzf libmicrohttpd-0.9.59.tar.gz
 
-  >./configure --with-gnutls
-
-  >make
-
-  >sudo make install
+> tar -xvzf libmicrohttpd-0.9.59.tar.gz
+> ./configure --with-gnutls  
+> make  
+> sudo make install  
 
 Create libmicrohttpd.so.12 file in `/usr/lib` or `usr/local/lib` directory (or where the your build path is pointing):
-  >cd /usr/lib
 
-  >sudo ln –s /usr/local/lib/libmicrohttpd.so.12.46.0 libmicrohttpd.so.12
+> cd /usr/lib  
+> sudo ln –s /usr/local/lib/libmicrohttpd.so.12.46.0 libmicrohttpd.so.12  
 
 In a case of missing libcrypto.so:
->	cd /usr/lib
+> cd /usr/lib  
+> sudo ln –s libcrypto.so.1.0.0 /lib/arm-linux-gnueabihf/libcrypt-2.24.so  
 
 ## Installation
 To install de library clone these project.
@@ -56,7 +55,7 @@ You can off curse include ass many ass you need.
 Provider my_provider("path_to_json_with_settings");
 my_provider.setMsgs(json_object);
 ```
-or with your on callback for when requests are reserved. 
+or with your on callback for when requests are received. 
 ```cpp
 int callbackFunktion(const char *URL, std::string *return_data);
 Provider my_provider("path_to_json_with_settings", callbackFunktion);

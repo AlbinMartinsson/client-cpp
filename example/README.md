@@ -12,7 +12,13 @@ system.
 You all sow need to add the consumer and publisher in the database, table
 'arrowhead_system'.
 And add the connections in 'intra_cloud_authorization'.
+These can be don by:
 
+> ah_gen_db_setup -f consumer.json  
+> ah_gen_db_setup -f publisher.json  
+> ah_gen_db_setup -f callback_consumer.json
+
+For more information on usages run `ah_gen_db_setup -h`.
 
 To build the examples run:
 
