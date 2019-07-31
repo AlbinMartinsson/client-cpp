@@ -34,7 +34,6 @@ using f_void_f = void(*)(const char*, const char*);
 		int callbackServerHttpPOST(const char *url, 
 						const char *payload);
 	private:
-		std::string base_name;
 		f_void_f callback;
 	};
 }

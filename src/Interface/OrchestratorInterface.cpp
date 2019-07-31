@@ -156,7 +156,7 @@ size_t OrchestratorInterface::httpsResponseCallback(char *ptr, size_t size)
 }
 
 
-size_t OrchestratorInterface::CallbackOrchestrationResponse(char *ptr, 
+size_t OrchestratorInterface::callbackOrchestrationResponse(char *ptr, 
 				size_t size) {
 
 //

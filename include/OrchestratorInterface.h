@@ -37,7 +37,7 @@ protected:
 									ArrowheadDataExt &config);
 		
 	int sendOrchestrationRequest(std::string rResult, ArrowheadDataExt *config);
-	size_t CallbackOrchestrationResponse(char *ptr, size_t size);
+	size_t callbackOrchestrationResponse(char *ptr, size_t size);
 
 	// callback path for GET
 	// @override
