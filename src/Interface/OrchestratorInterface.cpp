@@ -137,7 +137,7 @@ void OrchestratorInterface::jsonAddBool(json_object* obj, bool boolean, const ch
 
 // Overload Sensor-handler callback functionality here!
 size_t OrchestratorInterface::httpResponseCallback(char *ptr, size_t size) {
-	return CallbackOrchestrationResponse(ptr, size);
+	return callbackOrchestrationResponse(ptr, size);
 }
 
 size_t OrchestratorInterface::callbackGETHttp(char *ptr, size_t size){
@@ -152,7 +152,7 @@ size_t OrchestratorInterface::callbackRequest(const char *ptr, size_t size){
 
 size_t OrchestratorInterface::httpsResponseCallback(char *ptr, size_t size)
 {
-	return CallbackOrchestrationResponse(ptr, size);
+	return callbackOrchestrationResponse(ptr, size);
 }
 
 
