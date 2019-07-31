@@ -86,7 +86,7 @@ my_consumer.config /.../
 my_consumer.init(callbackFunction);
 my_consumer.request();
 ```
-The callbackFunction have to bi a `static void` whit parameter `const
+The callbackFunction have to bi a `void` whit parameter `const
 char* sendigng_url, const char* msgs)`
 
 ### Publisher example

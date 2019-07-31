@@ -23,7 +23,7 @@ namespace arrowhead{
 			fprintf(stderr, "cod not register sensor!\n");
 			return false;
 		}
-		Subscriber::callback = callback;
+		this -> callback = callback;
 		return true;
 	}
 

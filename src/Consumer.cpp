@@ -34,7 +34,7 @@ namespace arrowhead{
 			return false;
 		}
 		
-		Consumer::callback = callback;
+		this -> callback = callback;
 		return true;
 	}
 

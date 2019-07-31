@@ -222,8 +222,8 @@ inline const char *GetHttpPayload(ArrowheadDataExt &config)
     json_object_object_add(serviceMetadata, "unit", jstring);
 
     if(config.AUTHENTICATION_INFO.size() != 0){
-	jstring = json_object_new_string(config.SECURITY.c_str());
-	json_object_object_add(serviceMetadata, "security", jstring);
+		jstring = json_object_new_string(config.SECURITY.c_str());
+		json_object_object_add(serviceMetadata, "security", jstring);
     }
 
     json_object_object_add(providedService, "serviceMetadata",
@@ -241,15 +241,15 @@ inline const char *GetHttpPayload(ArrowheadDataExt &config)
 
     if(config.AUTHENTICATION_INFO.size() != 0){
 
-	jstring = json_object_new_string(config.AUTHENTICATION_INFO.c_str());
-	json_object_object_add(provider, "authenticationInfo", jstring);
+		jstring = json_object_new_string(config.AUTHENTICATION_INFO.c_str());
+		json_object_object_add(provider, "authenticationInfo", jstring);
 
-	jint = json_object_new_int(config.THIS_PORT+1);
-	json_object_object_add(provider, "port", jint);
+		jint = json_object_new_int(config.THIS_PORT+1);
+		json_object_object_add(provider, "port", jint);
     }
     else{
-	jint = json_object_new_int(config.THIS_PORT);
-	json_object_object_add(provider, "port", jint);
+		jint = json_object_new_int(config.THIS_PORT);
+		json_object_object_add(provider, "port", jint);
     }
 
 /*

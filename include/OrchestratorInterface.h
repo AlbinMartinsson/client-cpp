@@ -13,6 +13,12 @@ class OrchestratorInterface : HttpHandler, HttpsHandler {
 private:
 
 	std::string URI;
+	
+	// help functions to clean up code
+	void jsonAddString(json_object* obj, std::string str, const char* name);
+	void jsonAddInt(json_object* obj, int nr, const char* name);
+	void jsonAddBool(json_object* obj, bool boolean, const char* name);
+
 protected:
 	std::string target_uri;
 

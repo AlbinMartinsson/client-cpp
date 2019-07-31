@@ -70,6 +70,7 @@ add_executable(uTest
 	test/main_test.cpp
 	test/test_ErrorPrevention.cpp
 	test/test_arrowheadDataExt.cpp
+	test/test_Orchestration.cpp
 )
 
 target_link_libraries(uTest 

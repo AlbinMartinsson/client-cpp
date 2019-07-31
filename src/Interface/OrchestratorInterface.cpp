@@ -55,89 +55,80 @@ bool OrchestratorInterface::getOrchetrationRequestForm(
             	"\"port\": \""+std::to_string(config.TARGET_PORT)+"\" } } ] }";
  	fprintf(stderr, "\norigin:\n%s\n", form.c_str());
 	*/
-	
-
-	json_object *jstring;
-	json_object *jint;
 
 	//requesteSystem
 	json_object *requester_system = json_object_new_object();
-	jstring = json_object_new_string(config.THIS_SYSTEM_NAME.c_str());
-	json_object_object_add(requester_system, "systemName", jstring);
-	
-	jstring = json_object_new_string(config.THIS_ADDRESS.c_str());
-	json_object_object_add(requester_system, "address", jstring);
 
-	jint = json_object_new_int(config.THIS_PORT);
-	json_object_object_add(requester_system, "port", jint);
+	jsonAddString(requester_system, config.THIS_SYSTEM_NAME, "systemName");
+	jsonAddString(requester_system, config.THIS_ADDRESS, "address");
+	jsonAddInt(requester_system, config.THIS_PORT, "port");
 
-	jstring = json_object_new_string(config.AUTHENTICATION_INFO.c_str());
-	json_object_object_add(requester_system, "authenticationInfo", jstring);
+	jsonAddString(requester_system, config.AUTHENTICATION_INFO, "authenticationInfo");
 	
 
-	json_object *local = json_object_new_object();
-	json_object_object_add(local, "requesterSystem", requester_system);
 
 	// requestedService
 	json_object *requested_service = json_object_new_object();
-	jstring = json_object_new_string(config.SERVICE_NAME.c_str());
-	json_object_object_add(requested_service, "serviceDefinition", jstring);
 	
+	jsonAddString(requested_service, config.SERVICE_NAME, "serviceDefinition");
+
 	json_object *jarray = json_object_new_array();
-	jstring = json_object_new_string(config.INTERFACE.c_str());
-	json_object_array_add(jarray, jstring);
+	json_object_array_add(jarray,
+					json_object_new_string(config.INTERFACE.c_str()));
+
 	json_object_object_add(requested_service, "interfaces", jarray);
 
 	json_object *service_metadata = json_object_new_object();
-	jstring = json_object_new_string(config.SECURITY.c_str());
-	json_object_object_add(service_metadata, "security", jstring);
+	jsonAddString(service_metadata, config.SECURITY, "security");
 	json_object_object_add(requested_service, "serviceMetadata", service_metadata);
 	
-	json_object_object_add(local, "requestedService", requested_service);
 	
 	// orchestrationFlags
 	json_object *orchestration_flags = json_object_new_object();
-	json_object *jbool;
-	jbool = json_object_new_boolean((config.OVERRIDE_STORE ? 1 : 0));
-	json_object_object_add(orchestration_flags, "overrideStore" , jbool);
 	
-	jbool = json_object_new_boolean((config.MATCHMAKING ? 1: 0));
-	json_object_object_add(orchestration_flags, "matchmaking" , jbool);
-	
-	jbool = json_object_new_boolean((config.METADATA_SEARCH ? 1: 0));
-	json_object_object_add(orchestration_flags, "metadataSearch" , jbool);
-	
-	jbool = json_object_new_boolean((config.PING_PROVIDERS ? 1: 0));
-	json_object_object_add(orchestration_flags, "pingProviders" , jbool);
-	
-	jbool = json_object_new_boolean((config.ONLY_PREFERRED ? 1: 0));
-	json_object_object_add(orchestration_flags, "onlyPreferred" , jbool);
-	
-	jbool = json_object_new_boolean(config.EXTERNAL_SERVICE_REQUEST);
-	json_object_object_add(orchestration_flags, "externalServiceRequest" , jbool);
+	jsonAddBool(orchestration_flags, config.OVERRIDE_STORE, "overrideStore");
+	jsonAddBool(orchestration_flags, config.MATCHMAKING, "matchmaking");
+	jsonAddBool(orchestration_flags, config.METADATA_SEARCH, "metadataSearch");
+	jsonAddBool(orchestration_flags, config.PING_PROVIDERS, "pingProviders");
+	jsonAddBool(orchestration_flags, config.ONLY_PREFERRED, "onlyPreferred");
+	jsonAddBool(orchestration_flags, config.EXTERNAL_SERVICE_REQUEST, "externalServiceRequest");
 
-	json_object_object_add(local, "orchestrationFlags", orchestration_flags);
 
 	// preferdProvider
 	json_object *preferred_provider = json_object_new_object();
 	jarray = json_object_new_array();
 	
 	json_object *provider_system = json_object_new_object();
-	jstring = json_object_new_string(config.TARGET_SYSTEM_NAME.c_str());
-	json_object_object_add(provider_system, "systemName", jstring);
-	
-	jstring = json_object_new_string(config.TARGET_ADDRESS.c_str());
-	json_object_object_add(provider_system, "address", jstring);
-	
-	jint = json_object_new_int(config.TARGET_PORT);
-	json_object_object_add(provider_system, "port", jint);
+
+	jsonAddString(provider_system, config.TARGET_SYSTEM_NAME, "systemName");
+	jsonAddString(provider_system, config.TARGET_ADDRESS, "address");
+	jsonAddInt(provider_system, config.TARGET_PORT, "port");
+
 
 	json_object_object_add(preferred_provider, "providerSystem", provider_system);
 	json_object_array_add(jarray, preferred_provider);
+	
+	json_object *local = json_object_new_object();
+	json_object_object_add(local, "requesterSystem", requester_system);
+	json_object_object_add(local, "requestedService", requested_service);
+	json_object_object_add(local, "orchestrationFlags", orchestration_flags);
 	json_object_object_add(local, "preferredProviders", jarray);
 		
 	request_form = local;
 	return true;
+}
+
+void OrchestratorInterface::jsonAddString(json_object* obj, std::string str, const char* name) {
+	json_object_object_add(obj, name, 
+					json_object_new_string(str.c_str()));
+}
+
+void OrchestratorInterface::jsonAddInt(json_object* obj, int nr, const char* name) {
+	json_object_object_add(obj, name, json_object_new_int(nr));
+}
+
+void OrchestratorInterface::jsonAddBool(json_object* obj, bool boolean, const char* name) {
+	json_object_object_add(obj, name, json_object_new_boolean(boolean));
 }
 
 ///////////////
