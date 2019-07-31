@@ -4,7 +4,7 @@
 // callback when a published messages is received
 // url is the "SERVICE_URL" that are sent
 // prt contains the messages
-static void callback(const char* url, const char* ptr){
+void callback(const char* url, const char* ptr){
 	printf("messages received: \n%s\n", ptr);
 }
 

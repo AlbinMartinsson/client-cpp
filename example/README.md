@@ -1,6 +1,6 @@
 # Examples
 
-There are 5 unike example.
+There are 5 unique example.
 One of each type of system: provider, consumer, publisher and subscriber.
 And one alternative provider.
 To the alternative provider a corresponding consumer with appropriate
@@ -33,6 +33,18 @@ To run the examples:
 > bin/example_subscriber  
 > bin/example_callback_provider  
 > bin/example_callback_consumer
+
+With `run_all.sh` can you run all examples.
+It requires `tmux`, to install `tmux` `sudo atp install tmux`.
+And run `./run_all.sh`.
+It will open a `tmux` window with six panels, one for each example.
+The layout is:
+
+| layout | nodes |
+|---|
+| example_provider | example_consumer |
+| example_publisher | example_subscriber |
+| example_callback_provider | example_callback_consumer |
 
 There is all sow a test build.
 To run that:

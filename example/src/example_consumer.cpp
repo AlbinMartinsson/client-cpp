@@ -5,7 +5,7 @@
 // callback when a request returns.
 // url contains the customs url (config.SERVICE_URL)
 // ptr constains the message.
-static void callback(const char* url, const char* prt){
+void callback(const char* url, const char* prt){
 	printf("callback received: \n%s\n", prt);
 }
 
