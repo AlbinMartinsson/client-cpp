@@ -1,7 +1,7 @@
 # Arrowhead framework client C++  
 These is a library to enable the use of Arrowhead framework with `c++`
 code.
-It is designed to be installed ass a library.
+It is designed to be installed ass a dynamic library.
 
 ## Prerequisites
 The following Linux packages are prerequisites:
@@ -15,7 +15,7 @@ The project uses libmicrohttpd-0.9.59 as well. Download, compile and install it 
 > make  
 > sudo make install  
 
-Create libmicrohttpd.so.12 file in `/usr/lib` or `usr/local/lib` directory (or where the your build path is pointing):
+Create libmicrohttpd.so.12 file in `/usr/lib` or `usr/local/lib` directory (or where your build path is pointing):
 
 > cd /usr/lib  
 > sudo ln –s /usr/local/lib/libmicrohttpd.so.12.46.0 libmicrohttpd.so.12  
@@ -48,7 +48,7 @@ provider, consumer, publisher or subscriber.
 #include "arrowhead/Publisher.h"
 #include "arrowhead/Subscriber.h"
 ```
-It is written in `namespace arrowhead`.
+They are written in `namespace arrowhead`.
 You can off curse include ass many ass you need.
 ### Provider example
 ```cpp
@@ -70,8 +70,8 @@ my_provider.setMsgs(json_object)
 `my_provider.config` is a struct containing settings, see more under
 `config`.
 The `json_object` shod contain the msgs you providing.
-The callbackFunctions need to be a int returner. That returns 1 when it is
-working.
+The callbackFunction need to be a int returner.
+It returns 1 when it is working.
 And the parameters need to be of type `const char*` and `std::string*`.
 
 ### Consumer example
@@ -87,7 +87,7 @@ my_consumer.init(callbackFunction);
 my_consumer.request();
 ```
 The callbackFunction have to bi a `void` whit parameter `const
-char* sendigng_url, const char* msgs)`
+char*` sending_url, `const char*` msgs.
 
 ### Publisher example
 ```cpp
@@ -112,30 +112,32 @@ Subscriber my_subscriber;
 my_subscriber.config /.../
 my_subscriber.init(callbackFunction);
 ```
-#### For examples see `example`
+The callbackFunction have to bi a `void` whit parameter `const
+char*` sending_url, `const char*` msgs.
 
-### config
+#### For examples see `example/`
+
+### Config
 Arrowhead framework require some system specific parameters to work.
-Those parameters are set by the `.config` struct.
+Those parameters are set by the `config` struct.
 The parameters need to be set before the `init` function.
-It is recommended to create some launch file where these parameters are
+It is recommended to create a launch file (.json) where these parameters are
 define and then loaded in code.
 Many of these parameters need to sync with the rest of the system and you
-only want to set the parameter once.
+only wants to set the parameter once.
 It is left to you to figure out how to do that best in your
 system.
 
-The parameters that are to be set are: (all is not always used)
+The parameters are: (all is not always used)
 
 
 | Parameter name 				| Type 		| Usages |
 |:------------------------------|:----------|:-------|
-| SERVICE_NAME					| string	| Name of the service |
-| INTERFACE						| string	| Interface used ex. JSON |
-| SERVICE_URI					| string	| Identification string |
-| UNIT							| string	| The unit of the service data |
-| SECURITY						| string	| Type of security ex. Token |
 | ACCESS_URI					| string	| URI to serviseRegestry or orchestration |
+| SECURE_ARROWHEAD_INTERFACE	| bool		| Is HTTPs used to interface with core|
+| SECURE_PROVIDER_INTERFACE		| bool		| Is HTTPs used to interface with provider |
+| PUBLIC_KEY_PATH				| string	| Absolute path to public key |
+| PRIVATE_KEY_PATH				| string	| Absolute path to private key |
 | OVERRIDE_STORE				| bool		| Orchestration flags |
 | MATCHMAKING					| bool		| Orchestration flags |
 | METADATA_SEARCH				| bool		| Orchestration flags |
@@ -148,20 +150,21 @@ The parameters that are to be set are: (all is not always used)
 | TARGET_SYSTEM_NAME			| string	| Target system's name |
 | TARGET_ADDRESS				| string	| Target system's address|
 | TARGET_PORT 					| int		| Target system's port |
-| SECURE_ARROWHEAD_INTERFACE	| bool		| Is HTTPs used |
-| SECURE_PROVIDER_INTERFACE		| bool		| Is HTTPs used to interface with provider |
-| PUBLIC_KEY_PATH				| string	| Absolute path to public key |
-| PRIVATE_KEY_PATH				| string	| Absolute path to private key |
-| AUTHENTICATION_INFO			| string	| not user set |
+| SERVICE_NAME					| string	| Name of the service |
+| SERVICE_URI					| string	| Identification string |
+| INTERFACE						| string	| Interface used ex. JSON |
+| SECURITY						| string	| Type of security ex. Token |
+| UNIT							| string	| The unit of the service data |
 
 
 # Work to do
 ## HTTPs
 At the moment is no HTTPs functionality implemented.
 Some code for that do exist.
-The existing HTTPs code (like with HttpsHandler and HttpHandler) need to be split from non HTTP code to create 
+The existing HTTPs code need to be split (like with HttpsHandler and HttpHandler) from non HTTP code to create 
 a good code structure.
 
 ## Code robustness
-There is a need for some checks on in and outgoing msgs sow it is the
-correct once with correct formatting.
+There are a some checks to inshore that the correct messages are sent.
+These checks are not covering all cases.
+It would be a good idea to extend these sow bad things don't happen.

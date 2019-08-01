@@ -7,9 +7,9 @@ To the alternative provider a corresponding consumer with appropriate
 `callback_consumer.json`.
 
 
-To make them work do you need to change the `.json` files to match your
+To make the examples work do you need to change the `.json` files to match your
 system.
-You all sow need to add the consumer and publisher in the database, table
+You also need to add the consumer and publisher in the database, table
 'arrowhead_system'.
 And add the connections in 'intra_cloud_authorization'.
 These can be don by:
@@ -34,8 +34,9 @@ To run the examples:
 > bin/example_callback_provider  
 > bin/example_callback_consumer
 
-With `run_all.sh` can you run all examples.
-It requires `tmux`, to install `tmux` `sudo atp install tmux`.
+With `run_all.sh` can you run all examples at once.
+It requires `tmux`.
+To install `tmux`, `sudo atp install tmux`.
 And run `./run_all.sh`.
 It will open a `tmux` window with six panels, one for each example.
 The layout is:
@@ -46,7 +47,7 @@ The layout is:
 | example_publisher | example_subscriber |
 | example_callback_provider | example_callback_consumer |
 
-There is all sow a test build.
+There is also a test build.
 To run that:
 
 > bin/uTest 
