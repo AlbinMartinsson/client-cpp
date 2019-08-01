@@ -50,7 +50,7 @@ namespace arrowhead{
 			this -> msgs = msgs;
 			printf("New measurement received from: %s\n", 
 						config.SERVICE_NAME.c_str());
-			printf("megs updated.\n");
+			printf("Msgs updated.\n");
 			return true;
 		}
 		return false;

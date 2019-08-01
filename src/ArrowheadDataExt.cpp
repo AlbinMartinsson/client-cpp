@@ -16,7 +16,7 @@ namespace arrowhead{
 		printf("SERVICE_NAME: %s\n", SERVICE_NAME.c_str());
 		printf("INTERFACE: %s\n", INTERFACE.c_str());
 		printf("SERVICE_URI: %s\n", SERVICE_URI.c_str());
-		printf("UNIT : %s\n", UNIT.c_str());
+		printf("UNIT: %s\n", UNIT.c_str());
 		printf("SECURITY: %s\n", SECURITY.c_str());
 	
 		printf("\nCore conection\n");
