@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/albin/Documents/client-cpp/example/src/example_callback_provider.cpp
+arrowhead/Provider.h
+/home/albin/Documents/client-cpp/example/src/arrowhead/Provider.h
+iostream
+/home/albin/Documents/client-cpp/example/src/iostream
+ctime
+-
+json-c/json.h
+-
+arrowhead/iniparser.h
+/home/albin/Documents/client-cpp/example/src/arrowhead/iniparser.h
+arrowhead/iniparser.h
+/home/albin/Documents/client-cpp/example/src/arrowhead/iniparser.h
+

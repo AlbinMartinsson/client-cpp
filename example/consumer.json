@@ -1,6 +1,6 @@
 {
 	"core": {
-		"access_uri": "http://localhost:8440/orchestrator/orchestration",
+		"access_uri": "http://127.0.0.1:8441/orchestrator/orchestration",
 		"secure_arrowhead_interface": false,
 		"secure_provider_interface": false,
 		"public_key_path": "",
@@ -17,13 +17,13 @@
 	},
 	"this_system": {
 		"this_name": "example_consumer",
-		"this_address": "130.240.5.68",
+		"this_address": "127.0.0.1",
 		"this_port": 8501
 	},
 	"target_system": {
 		"target_name": "example_provider",
-		"target_address": "130.240.5.68",
-		"target_port": 8500
+		"target_address": "127.0.0.1",
+		"target_port": 8600
 	},
 	"service": {
 		"service_name": "counter_example",

@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/albin/Documents/client-cpp/example/src/example_subscriber.cpp
+iostream
+-
+arrowhead/Subscriber.h
+/home/albin/Documents/client-cpp/example/src/arrowhead/Subscriber.h
+

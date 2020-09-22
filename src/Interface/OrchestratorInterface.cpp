@@ -67,52 +67,52 @@ bool OrchestratorInterface::getOrchetrationRequestForm(
 	
 
 
-	// requestedService
-	json_object *requested_service = json_object_new_object();
+	// // requestedService
+	// json_object *requested_service = json_object_new_object();
 	
-	jsonAddString(requested_service, config.SERVICE_NAME, "serviceDefinition");
+	// jsonAddString(requested_service, config.SERVICE_NAME, "serviceDefinition");
 
-	json_object *jarray = json_object_new_array();
-	json_object_array_add(jarray,
-					json_object_new_string(config.INTERFACE.c_str()));
+	// json_object *jarray = json_object_new_array();
+	// json_object_array_add(jarray,
+	// 				json_object_new_string(config.INTERFACE.c_str()));
 
-	json_object_object_add(requested_service, "interfaces", jarray);
+	// json_object_object_add(requested_service, "interfaces", jarray);
 
-	json_object *service_metadata = json_object_new_object();
-	jsonAddString(service_metadata, config.SECURITY, "security");
-	json_object_object_add(requested_service, "serviceMetadata", service_metadata);
+	// json_object *service_metadata = json_object_new_object();
+	// jsonAddString(service_metadata, config.SECURITY, "security");
+	// json_object_object_add(requested_service, "serviceMetadata", service_metadata);
 	
 	
-	// orchestrationFlags
-	json_object *orchestration_flags = json_object_new_object();
+	// // orchestrationFlags
+	// json_object *orchestration_flags = json_object_new_object();
 	
-	jsonAddBool(orchestration_flags, config.OVERRIDE_STORE, "overrideStore");
-	jsonAddBool(orchestration_flags, config.MATCHMAKING, "matchmaking");
-	jsonAddBool(orchestration_flags, config.METADATA_SEARCH, "metadataSearch");
-	jsonAddBool(orchestration_flags, config.PING_PROVIDERS, "pingProviders");
-	jsonAddBool(orchestration_flags, config.ONLY_PREFERRED, "onlyPreferred");
-	jsonAddBool(orchestration_flags, config.EXTERNAL_SERVICE_REQUEST, "externalServiceRequest");
+	// jsonAddBool(orchestration_flags, config.OVERRIDE_STORE, "overrideStore");
+	// jsonAddBool(orchestration_flags, config.MATCHMAKING, "matchmaking");
+	// jsonAddBool(orchestration_flags, config.METADATA_SEARCH, "metadataSearch");
+	// jsonAddBool(orchestration_flags, config.PING_PROVIDERS, "pingProviders");
+	// jsonAddBool(orchestration_flags, config.ONLY_PREFERRED, "onlyPreferred");
+	// jsonAddBool(orchestration_flags, config.EXTERNAL_SERVICE_REQUEST, "externalServiceRequest");
 
 
-	// preferdProvider
-	json_object *preferred_provider = json_object_new_object();
-	jarray = json_object_new_array();
+	// // preferdProvider
+	// json_object *preferred_provider = json_object_new_object();
+	// jarray = json_object_new_array();
 	
-	json_object *provider_system = json_object_new_object();
+	// json_object *provider_system = json_object_new_object();
 
-	jsonAddString(provider_system, config.TARGET_SYSTEM_NAME, "systemName");
-	jsonAddString(provider_system, config.TARGET_ADDRESS, "address");
-	jsonAddInt(provider_system, config.TARGET_PORT, "port");
+	// jsonAddString(provider_system, config.TARGET_SYSTEM_NAME, "systemName");
+	// jsonAddString(provider_system, config.TARGET_ADDRESS, "address");
+	// jsonAddInt(provider_system, config.TARGET_PORT, "port");
 
 
-	json_object_object_add(preferred_provider, "providerSystem", provider_system);
-	json_object_array_add(jarray, preferred_provider);
+	// json_object_object_add(preferred_provider, "providerSystem", provider_system);
+	// json_object_array_add(jarray, preferred_provider);
 	
 	json_object *local = json_object_new_object();
 	json_object_object_add(local, "requesterSystem", requester_system);
-	json_object_object_add(local, "requestedService", requested_service);
-	json_object_object_add(local, "orchestrationFlags", orchestration_flags);
-	json_object_object_add(local, "preferredProviders", jarray);
+	// json_object_object_add(local, "requestedService", requested_service);
+	// json_object_object_add(local, "orchestrationFlags", orchestration_flags);
+	// json_object_object_add(local, "preferredProviders", jarray);
 		
 	request_form = local;
 	return true;

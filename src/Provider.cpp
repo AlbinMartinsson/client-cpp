@@ -34,7 +34,7 @@ namespace arrowhead{
 		
 		// register in the service register
 		if(!registerSensor(config)) {
-			fprintf(stderr, "cod not register sensor!\n");
+			fprintf(stderr, "could not register sensor!\n");
 			return false;
 		}
 	

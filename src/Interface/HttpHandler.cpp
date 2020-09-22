@@ -80,8 +80,8 @@ int HttpHandler::sendRequest(std::string pdata, std::string paddr,
 			curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, &httpResponseHandler);
 			curl_easy_setopt(curl, CURLOPT_POSTFIELDSIZE, -1L);
 		}
-		
-		curl_easy_setopt(curl, CURLOPT_WRITEDATA, this);
+          
+          curl_easy_setopt(curl, CURLOPT_WRITEDATA, this);
 		curl_easy_setopt(curl, CURLOPT_URL, paddr.c_str());
 		
 		// Perform the request, res will get the return code

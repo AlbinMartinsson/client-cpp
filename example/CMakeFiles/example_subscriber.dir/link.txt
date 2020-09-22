@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/example_subscriber.dir/src/example_subscriber.cpp.o -o bin/example_subscriber   -L/usr/local/lib  -Wl,-rpath,/usr/local/lib -larrowhead_cpp -ljson-c 

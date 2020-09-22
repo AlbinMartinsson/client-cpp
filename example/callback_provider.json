@@ -1,6 +1,6 @@
 {
 	"core": {
-		"access_uri": "http://localhost:8442/serviceregistry/",
+		"access_uri": "http://localhost:8443/serviceregistry/",
 		"secure_arrowhead_interface": false,
 		"secure_provider_interface": false,
 		"public_key_path": "",
@@ -9,7 +9,7 @@
 	},
 	"this_system": {
 		"this_name": "example_callback_provider",
-		"this_address": "130.240.5.68",
+		"this_address": "127.0.0.1",
 		"this_address6": "",
 		"this_port": 8505
 	},

@@ -1,0 +1,1 @@
+/usr/bin/c++ -rdynamic CMakeFiles/example_provider.dir/src/example_provider.cpp.o -o bin/example_provider   -L/usr/local/lib  -Wl,-rpath,/usr/local/lib -larrowhead_cpp -ljson-c 

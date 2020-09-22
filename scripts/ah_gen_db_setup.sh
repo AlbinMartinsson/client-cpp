@@ -9,7 +9,7 @@ table="arrowhead"
 app=false;
 
 function helpF () {
-	echo "Read a .json and add the this_system, target_system, service and intra_cloud_authorization to the arrowhead database."
+	echo "Read a .json and add the this_system, target_system, service and authorization_intra_cloud to the arrowhead database."
 	echo "Usage: ah_gen_db_setup [OPTIONS]... -f [.json file]"
 	echo "Flags:"
 	echo "-a	only set this_system"
@@ -31,7 +31,7 @@ while getopts p:u:d:hf:a aflag; do
 		u) user=$OPTARG;;
 		d) table=$OPTARG;;
 		h) helpF;;
-		f) file="${PWD}""/""$OPTARG";;
+		f) file="/home/albin/Documents/client-cpp/example""/""$OPTARG";;
 	esac
 done
 
@@ -77,11 +77,11 @@ function findID () {
 # $3 = port
 function fixSystem() {
 	local id=""
-	id=$(mysql -u "$user" -p"$pw" -D "$table" -e "select id from arrowhead_system where system_name = ""$1"";" -N)
+	id=$(mysql -u "$user" -p"$pw" -D "$table" -e "select id from system_ where system_name = ""$1"";" -N)
 	if [ "${id}" == "" ]; then
-		findID arrowhead_system "$id"
+		findID system_ "$id"
 		id=$returnVal
-		mysql -u "$user" -p"$pw" -D "$table" -e "insert into arrowhead_system values(""$id"", ""$2"",'', ""$3"", ""$1"");"
+		mysql -u "$user" -p"$pw" -D "$table" -e "insert into system_ (id, system_name, address, port, authentication_info)  values(""$id"", ""$1"",  ""$2"" , ""$3"", '');"
 	fi
 	returnVal=$id
 }
@@ -99,23 +99,23 @@ IDtarget="$returnVal"
 echo "Target system is in."
 
 # service
-IDservice=$(mysql -u "$user" -p"$pw" -D "$table" -e "select id from arrowhead_service where service_definition = ""$serviceName"";" -N)
+IDservice=$(mysql -u "$user" -p"$pw" -D "$table" -e "select id from service_definition where service_definition = ""$serviceName"";" -N)
 
 if [ "$IDservice" == "" ]; then
-	findID	arrowhead_service "$IDservice"
+	findID	service_definition "$IDservice"
 	IDservice="$returnVal"
-	mysql -u "$user" -p"$pw" -D "$table" -e "insert into arrowhead_service values(""$IDservice"", ""$serviceName"");"
+	mysql -u "$user" -p"$pw" -D "$table" -e "insert into service_definition (id, service_definition) values(""$IDservice"", ""$serviceName"");"
 fi
 
 echo "Service is in"
 
 # intra
-test1=$(mysql -u "$user" -p"$pw" -D "$table" -e "select * from intra_cloud_authorization where consumer_system_id=""$IDthis"" AND provider_system_id=""$IDtarget"" AND arrowhead_service_id=""$IDservice"";")
+test1=$(mysql -u "$user" -p"$pw" -D "$table" -e "select * from authorization_intra_cloud where consumer_system_id=""$IDthis"" AND provider_system_id=""$IDtarget"" AND service_id=""$IDservice"";")
 
 if [ "$test1" == "" ]; then
-	findID intra_cloud_authorization 1
+	findID authorization_intra_cloud 1
 	index="$returnVal"
-	mysql -u "$user" -p"$pw" -D "$table" -e "insert into intra_cloud_authorization values(""$index"",""$IDthis"",""$IDtarget"",""$IDservice"");"
+	mysql -u "$user" -p"$pw" -D "$table" -e "insert into authorization_intra_cloud (id, consumer_system_id, provider_system_id, service_id) values(""$index"",""$IDthis"",""$IDtarget"",""$IDservice"");"
 fi
 
 echo "Done!"
